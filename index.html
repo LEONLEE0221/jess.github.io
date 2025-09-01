@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Western Services Sample Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { 
+            background: linear-gradient(to bottom, #dbeafe, #93c5fd);
+            font-family: 'Inter', sans-serif;
+        }
+        .container { 
+            transition: all 0.3s ease;
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 30px rgba(0, 91, 187, 0.15);
+        }
+        .container:hover { 
+            box-shadow: 0 8px 40px rgba(0, 91, 187, 0.25);
+            transform: translateY(-4px);
+        }
+        input, select { 
+            transition: all 0.3s ease;
+            border: 1px solid #93c5fd;
+            border-radius: 0.75rem;
+            padding: 0.75rem;
+        }
+        input:focus, select:focus { 
+            border-color: #1e40af;
+            box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.2);
+            outline: none;
+        }
+        button { 
+            transition: all 0.3s ease;
+            border-radius: 0.75rem;
+        }
+        button:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 91, 187, 0.3);
+        }
+        th { 
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .notes { 
+            background: #f0f9ff;
+            border-left: 6px solid #1e40af;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+        .add-row-btn, .delete-row-btn, .save-csv-btn { 
+            background: #2563eb;
+        }
+        .add-row-btn:hover, .delete-row-btn:hover, .save-csv-btn:hover { 
+            background: #1e40af;
+        }
+        h1, h2 { 
+            font-weight: 700;
+            background: linear-gradient(to right, #1e40af, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-header {
+            border-bottom: 2px solid #93c5fd;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6">
+    <div class="container bg-white rounded-2xl p-10 max-w-5xl w-full">
+        <h1 class="text-4xl font-bold text-center mb-8">Simple Western Services Sample Form</h1>
+        <form id="sampleForm" class="space-y-8">
+            <div class="section">
+                <h2 class="text-2xl section-header">Basic Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div>
+                        <label for="serviceId" class="block text-sm font-medium text-blue-800">Service ID</label>
+                        <select id="serviceId" class="mt-2 block w-full rounded-md focus:ring focus:ring-blue-200 focus:border-blue-600">
+                            <option value="">Select an option</option>
+                            <option>CWB-S12</option>
+                            <option>CWB-S24</option>
+                            <option>FWB-S12</option>
+                            <option>FWB-S24</option>
+                            <option>CWB-S12-TPN</option>
+                            <option>CWB-S24-TPN</option>
+                            <option>FWB-S12-TPN</option>
+                            <option>FWB-S24-TPN</option>
+                            <option>Others (Please specify)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-blue-800">Phone Number</label>
+                        <input type="text" id="phone" class="mt-2 block w-full rounded-md focus:ring focus:ring-blue-200 focus:border-blue-600">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-blue-800">Email</label>
+                        <input type="email" id="email" class="mt-2 block w-full rounded-md focus:ring focus:ring-blue-200 focus:border-blue-600">
+                    </div>
+                    <div>
+                        <label for="surname" class="block text-sm font-medium text-blue-800">Surname</label>
+                        <input type="text" id="surname" class="mt-2 block w-full rounded-md focus:ring focus:ring-blue-200 focus:border-blue-600">
+                    </div>
+                    <div>
+                        <label for="givenName" class="block text-sm font-medium text-blue-800">Given Name</label>
+                        <input type="text" id="givenName" class="mt-2 block w-full rounded-md focus:ring focus:ring-blue-200 focus:border-blue-600">
+                    </div>
+                    <div>
+                        <label for="pi" class="block text-sm font-medium text-blue-800">Principal Investigator</label>
+                        <input type="text" id="pi" class="mt-2 block w-full rounded-md focus:ring focus:ring-blue-200 focus:border-blue-600">
+                    </div>
+                    <div>
+                        <label for="institute" class="block text-sm font-medium text-blue-800">Institute</label>
+                        <select id="institute" class="mt-2 block w-full rounded-md focus:ring focus:ring-blue-200 focus:border-blue-600">
+                            <option value="">Select an option</option>
+                            <option>CITYU</option>
+                            <option>CUHK</option>
+                            <option>HKBU</option>
+                            <option>HKU</option>
+                            <option>HKUST</option>
+                            <option>POLYU</option>
+                            <option>Others (Please specify)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="labAddress" class="block text-sm font-medium text-blue-800">Lab Address</label>
+                        <input type="text" id="labAddress" class="mt-2 block w-full rounded-md focus:ring focus:ring-blue-200 focus:border-blue-600">
+                    </div>
+                    <div>
+                        <label for="salesRep" class="block text-sm font-medium text-blue-800">Sales Representative</label>
+                        <select id="salesRep" class="mt-2 block w-full rounded-md focus:ring focus:ring-blue-200 focus:border-blue-600">
+                            <option value="">Select an option</option>
+                            <option>Allen HU</option>
+                            <option>Hasily LIU</option>
+                            <option>Joe LAI</option>
+                            <option>Leo DU</option>
+                            <option>Leon LI</option>
+                            <option>Yanny MAN</option>
+                            <option>Others (Please specify)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="text-2xl section-header">Sample Information</h2>
+                <div class="overflow-x-auto rounded-lg border border-blue-200">
+                    <table id="proteinTable" class="w-full border-collapse">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3">Target Protein Name</th>
+                                <th class="px-6 py-3">Molecular Weight (KDa)</th>
+                                <th class="px-6 py-3">Sample Qty</th>
+                                <th class="px-6 py-3">Total Protein Concentration (ug/ul)</th>
+                                <th class="px-6 py-3">Primary Antibody Brand</th>
+                                <th class="px-6 py-3">Primary Antibody Cat. No.</th>
+                                <th class="px-6 py-3">Primary Antibody Species</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hover:bg-blue-50">
+                                <td class="border border-blue-200 p-3"><input type="text" class="w-full rounded-md border-blue-300"></td>
+                                <td class="border border-blue-200 p-3"><input type="text" class="w-full rounded-md border-blue-300"></td>
+                                <td class="border border-blue-200 p-3"><input type="text" class="w-full rounded-md border-blue-300"></td>
+                                <td class="border border-blue-200 p-3"><input type="text" class="w-full rounded-md border-blue-300"></td>
+                                <td class="border border-blue-200 p-3">
+                                    <select class="w-full rounded-md border-blue-300">
+                                        <option value="">Select an option</option>
+                                        <option>Abcam</option>
+                                        <option>Abclonal</option>
+                                        <option>Bioss</option>
+                                        <option>Cell Signaling Technology</option>
+                                        <option>Dako</option>
+                                        <option>Epigentek</option>
+                                        <option>GenTex</option>
+                                        <option>Invitrogen Antibodies</option>
+                                        <option>LI-COR</option>
+                                        <option>Merck</option>
+                                        <option>MilliporeSigma</option>
+                                        <option>Novus Biologicals</option>
+                                        <option>OriGene</option>
+                                        <option>Progen</option>
+                                        <option>Proteintech</option>
+                                        <option>R&D Systems</option>
+                                        <option>Rockland Immunochemicals</option>
+                                        <option>Santa Cruz Biotechnology</option>
+                                        <option>Sino Bilogicals</option>
+                                        <option>ZenBio</option>
+                                        <option>Others (Please specify)</option>
+                                    </select>
+                                </td>
+                                <td class="border border-blue-200 p-3"><input type="text" class="w-full rounded-md border-blue-300"></td>
+                                <td class="border border-blue-200 p-3">
+                                    <select class="w-full rounded-md border-blue-300">
+                                        <option value="">Select an option</option>
+                                        <option>Goat</option>
+                                        <option>Mouse</option>
+                                        <option>Rabbit</option>
+                                        <option>Rat</option>
+                                        <option>Sheep</option>
+                                        <option>Others (Please specify)</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex space-x-4 mt-6">
+                    <button type="button" onclick="addRow()" class="add-row-btn bg-blue-600 text-white px-6 py-3 rounded-md">Add Row</button>
+                    <button type="button" onclick="deleteRow()" class="delete-row-btn bg-blue-600 text-white px-6 py-3 rounded-md">Delete Row</button>
+                </div>
+            </div>
+
+            <div class="notes">
+                <p class="font-semibold text-blue-800 mb-3">Note:</p>
+                <ul class="list-disc pl-6 text-sm text-gray-600 space-y-3">
+                    <li>We recommend shipping on Monday. For other days, confirm delivery occurs Monday to Thursday, 9:00 AM–5:00 PM.</li>
+                    <li>Email tracking number and form to: <a href="mailto:cs@medikonia.com" class="text-blue-600 hover:underline">cs@medikonia.com</a></li>
+                    <li>Label samples with: Sample name, Concentration, Storage temperature</li>
+                    <li>Sample requirements: Exosome samples and positive controls: Concentration ≥ 2 mg/mL; Volume ≥ 30 μL. Antibodies: Brand with Cat.No., e.g., Abcam ab92726; Volume ≥ 20 μL. 5× RIPA lysis buffer: Volume ≥ 20 μL</li>
+                    <li>Packaging: Include ice packs or dry ice in a foam box based on storage temperature.</li>
+                    <li>Recipient: Medikonia Limited, Unit 1005-1006, 10/F, Tower I, Grand Century Place, 193 Prince Edward Road West, Mong Kok, Kowloon, Hong Kong. Tel: <a href="tel:+85228668995" class="text-blue-600 hover:underline">2866 8995</a>, Email: <a href="mailto:cs@medikonia.com" class="text-blue-600 hover:underline">cs@medikonia.com</a>, Web: <a href="http://www.medikonia.com" class="text-blue-600 hover:underline">www.medikonia.com</a></li>
+                    <li>Send CSV file to your Sales Representative</li>
+                </ul>
+            </div>
+
+            <button type="button" onclick="saveAsCSV()" class="save-csv-btn bg-blue-600 text-white px-8 py-4 rounded-md w-full md:w-auto text-lg font-semibold">Save As CSV</button>
+        </form>
+    </div>
+
+    <script>
+        function addRow() {
+            const table = document.getElementById('proteinTable').getElementsByTagName('tbody')[0];
+            const newRow = table.rows[0].cloneNode(true);
+            Array.from(newRow.querySelectorAll('input, select')).forEach(el => el.value = '');
+            table.appendChild(newRow);
+        }
+
+        function deleteRow() {
+            const table = document.getElementById('proteinTable').getElementsByTagName('tbody')[0];
+            if (table.rows.length > 1) {
+                table.deleteRow(table.rows.length - 1);
+            }
+        }
+
+        function saveAsCSV() {
+            let csv = 'Service ID,Phone Number,Email,Surname,Given Name,Principal Investigator,Institute,Lab Address,Sales Representative\n';
+            csv += `${document.getElementById('serviceId').value},${document.getElementById('phone').value},${document.getElementById('email').value},${document.getElementById('surname').value},${document.getElementById('givenName').value},${document.getElementById('pi').value},${document.getElementById('institute').value},${document.getElementById('labAddress').value},${document.getElementById('salesRep').value}\n\n`;
+            csv += 'Target Protein Name,Molecular Weight (KDa),Sample Qty,Total Protein Concentration (ug/ul),Primary Antibody Brand,Primary Antibody Cat. No.,Primary Antibody Species\n';
+
+            const rows = document.querySelectorAll('#proteinTable tbody tr');
+            rows.forEach(row => {
+                const cells = Array.from(row.querySelectorAll('input, select')).map(el => el.value);
+                csv += cells.join(',') + '\n';
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Simple_Western_Services_Sample_Form.csv';
+            link.click();
+        }
+    </script>
+</body>
+</html>
