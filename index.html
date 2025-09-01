@@ -52,11 +52,17 @@
             border-radius: 0.5rem;
             padding: 1.5rem;
         }
-        .add-row-btn, .delete-row-btn, .save-csv-btn { 
+        .add-row-btn, .save-csv-btn { 
             background: #2563eb;
         }
-        .add-row-btn:hover, .delete-row-btn:hover, .save-csv-btn:hover { 
+        .delete-row-btn { 
+            background: #dc2626;
+        }
+        .add-row-btn:hover, .save-csv-btn:hover { 
             background: #1e40af;
+        }
+        .delete-row-btn:hover { 
+            background: #b91c1c;
         }
         h1, h2 { 
             font-weight: 700;
@@ -211,7 +217,7 @@
                 </div>
                 <div class="flex space-x-4 mt-6">
                     <button type="button" onclick="addRow()" class="add-row-btn bg-blue-600 text-white px-6 py-3 rounded-md">Add Row</button>
-                    <button type="button" onclick="deleteRow()" class="delete-row-btn bg-blue-600 text-white px-6 py-3 rounded-md">Delete Row</button>
+                    <button type="button" onclick="deleteRow()" class="delete-row-btn bg-red-600 text-white px-6 py-3 rounded-md">Delete Row</button>
                 </div>
             </div>
 
@@ -248,8 +254,14 @@
         }
 
         function saveAsCSV() {
+            const serviceId = document.getElementById('serviceId').value || 'Unknown';
+            const institute = document.getElementById('institute').value || 'Unknown';
+            const givenName = document.getElementById('givenName').value || 'Unknown';
+            const surname = document.getElementById('surname').value || 'Unknown';
+            const fileName = `${serviceId}_${institute}_${givenName}_${surname}.csv`;
+
             let csv = 'Service ID,Phone Number,Email,Surname,Given Name,Principal Investigator,Institute,Lab Address,Sales Representative\n';
-            csv += `${document.getElementById('serviceId').value},${document.getElementById('phone').value},${document.getElementById('email').value},${document.getElementById('surname').value},${document.getElementById('givenName').value},${document.getElementById('pi').value},${document.getElementById('institute').value},${document.getElementById('labAddress').value},${document.getElementById('salesRep').value}\n\n`;
+            csv += `${serviceId},${document.getElementById('phone').value},${document.getElementById('email').value},${surname},${givenName},${document.getElementById('pi').value},${institute},${document.getElementById('labAddress').value},${document.getElementById('salesRep').value}\n\n`;
             csv += 'Target Protein Name,Molecular Weight (KDa),Sample Qty,Total Protein Concentration (ug/ul),Primary Antibody Brand,Primary Antibody Cat. No.,Primary Antibody Species\n';
 
             const rows = document.querySelectorAll('#proteinTable tbody tr');
@@ -261,7 +273,7 @@
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = 'Simple_Western_Services_Sample_Form.csv';
+            link.download = fileName;
             link.click();
         }
     </script>
